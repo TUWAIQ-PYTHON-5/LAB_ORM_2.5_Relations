@@ -1,0 +1,57 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="comtainer">
+<div class="row">
+   
+        <div class="col-3">
+            <div class="p-4 shadow" >
+                <h4>{{ show_post.Title }}</h4>
+                <h6>Details : {{ show_post.Content }}</h6>
+                <h6>date & Time: {{ show_post.publish_date }}</h6>
+                <h6>Published?: {{ show_post.is_published }}</h6>
+                <div class="m-3 d-flex gap-2"><a href="{% url 'main:update_post' show_post.id %}" class="btn btn-primary">update</a><a href="{% url 'main:Delete_post' show_post.id %}" class="btn btn-danger">delete</a></div>
+                
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="m-3">
+            <h3>Reviews :</h3>
+            <br>
+            {% for i in review  %}
+                <div class="p-2 border mt-2">
+    
+                    <h5>{{ i.name }}</h5>
+                    <p>{{ i.content }}</p>
+    
+                </div>
+            {% endfor %}
+        </div>
+        <br>
+        <br>
+        
+        <div>
+        <form action="{% url  'main:add_review' show_post.id %}" method="post">
+            {% csrf_token %}
+
+            <label class="form-label"><strong>Your Name</strong></label>
+            <input type="text" name="name" class="form-control" placeholder="Your Name.." /> 
+            <br>
+
+            <label class="form-label"><strong>Your Commint</strong></label>
+            <textarea name="content" class="form-control" placeholder="Your Review here..."></textarea>
+
+
+
+            <input class="btn btn-primary" type="submit" value="Add Review" />
+
+        </form>
+
+    </div>
+</div>
+           
+       
+    
+        {% endblock %}
