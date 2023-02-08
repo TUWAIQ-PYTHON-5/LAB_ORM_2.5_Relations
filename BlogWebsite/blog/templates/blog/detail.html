@@ -1,0 +1,81 @@
+{%extends 'blog/base.html'%}
+{% load static %}
+
+
+{% block title %}
+Details for {{ blog.Title }} 
+{% endblock %}
+
+
+
+{% block content %}
+
+<style>
+
+
+</style>
+
+
+
+<br>
+<div class="container">
+
+    <hr>
+ 
+     <div class="row ">
+             <div class="card-body"><br><br><br><br>
+               <h5 class="card-title" style="color: rgba(8, 5, 20, 0.734);">{{blog.Title}}</h5><br>
+               <p class="card-text">{{blog.Content}}</p>
+               <p>{{blog.is_published}} Publish date: {{blog.publish_date}}</p>
+             </div>
+           </div>
+           <div class="m-3 d-flex gap-2"><a href="{% url 'blog:update_blog' blog.id %}" class="btn btn-secondary">update</a><a href="{% url 'blog:delete_blog' blog.id %}" class="btn btn-secondary">Delete</a></div>
+</div>
+
+
+
+
+<div class="container">
+    <h3>New Comments :</h3>
+    {% for comment in comments %}
+        <div class="p-2 border mt-2">
+
+            <h5>{{comment.name }}</h5>
+            <p>{{ comment.content }}</p>
+
+        </div>
+    {% endfor %}
+
+</div>
+
+
+
+
+
+
+<div class="container">
+  <br>
+  <h3>Add Comments here ...</h3> <hr> <br>
+  <form action="{%url 'blog:add_comment' blog.id  %}" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="Input1" class="form-label">Name :</label>
+      <input type="text" name="name" class="form-control" id="Input1" placeholder=" Enter your name..">
+    </div>
+    <br>
+    <div class="mb-3">
+      <label for="Textarea1" class="form-label">Add Comment : </label>
+      <textarea name="content" class="form-control" id="Textarea1" rows="2"></textarea>
+    </div>
+       <input class="btn btn-primary" type="submit" value="Submit">
+  </form>
+  </div>
+
+
+
+
+
+
+
+
+{% endblock %}
