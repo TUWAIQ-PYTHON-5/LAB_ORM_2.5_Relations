@@ -16,8 +16,12 @@
 {% load static %}
 {% if request.COOKIES.theme == "Dark" %}
 <body data-bs-theme="dark">
+    <div style="background-image: url({% static 'images/indexDark.jpg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center; min-height: 100vh;">
+
 {% else  %}
 <body data-bs-theme="white">
+    <div style="background-image: url({% static 'images/indexLight.jpg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center; min-height: 100vh;">
+
 
 {% endif %} 
 <div style="background-image: url({% static 'images/index.jpg' %}); background-repeat: no-repeat; background-size: cover; background-position: center center; min-height: 100vh;">
