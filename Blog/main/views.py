@@ -70,7 +70,7 @@ def search(request : HttpRequest):
         return render(request, "main/search_page.html")
 
 
-def add_review(request : HttpRequest, blog_id):
+def add_comment(request : HttpRequest, blog_id):
 
     if request.method == "POST":
         blog = Post.objects.get(id=blog_id)

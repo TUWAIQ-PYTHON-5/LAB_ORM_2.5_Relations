@@ -31,7 +31,7 @@
 <div>
     <h3>Add Comment</h3>
     <div>
-        <form action="{% url  'main:add_review' blog.id %}" method="post">
+        <form action="{% url  'main:add_comment' blog.id %}" method="post">
             {% csrf_token %}
 
             <input type="text" name="name" class="form-control" placeholder="Your Name.." /> 
