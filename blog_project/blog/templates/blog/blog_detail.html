@@ -1,0 +1,60 @@
+{% extends 'blog/base.html' %}
+{% block title %} Details for {{ blog.title }}  {% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="card text-dark bg-light mb-3">
+        <div class="card-body">
+    
+          <h5 class="card-title fs-3">{{blog.Title}}</h5>
+          <p class="card-text">
+          <p class="fs-2">Content:</p> {{ blog.Content}}<br>
+          <p class="fs-2">Is published:</p> {{blog.is_published}}<br>
+          <p class="fs-2">Publish date:</p> {{blog.publish_date}}
+          <div class="m-3 d-flex gap-2"><a href="{% url 'blog:update_blog' blog.id %}" class="btn btn-primary btn">update</a> <a href="{% url 'blog:delete_blog' blog.id %}" class="btn btn-danger">delete</a>
+        </div>
+    
+  
+
+</div>
+<div class="container">
+<div  class="m-3">
+    <h3>Reviews :</h3>
+    {% for x in reviews  %}
+        <div class="p-2 border mt-2">
+
+            <h5>Nane:  {{ x.name }}</h5>
+            <h6>Content: {{ x.content }} </h6>
+
+        </div>
+    {% endfor %}
+</div>
+</div>
+<p class="fs-2 text-center">Add Review</p>
+<div>
+    <div class="container">
+
+    <form action="{% url  'blog:add_review' blog.id %}" method="post">
+        {% csrf_token %}
+       
+          <div class="d-grid gap-4">
+          <input type="text" name="name" tabindex="-1" class="form-control disabled placeholder col-4" aria-hidden="true" placeholder="Your Name.."></a>
+     
+
+        <textarea name="content" class="form-control disabled placeholder col-4" placeholder="Your Review here..."></textarea>
+
+        <input class="btn btn-primary" type="submit" value="Add Review" />
+          </div>
+
+    </form>
+    </div>
+</div>
+</div>
+
+
+
+</div>
+
+
+
+{% endblock %}
