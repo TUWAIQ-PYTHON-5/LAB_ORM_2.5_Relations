@@ -1,0 +1,79 @@
+{% extends 'main/home.html' %}
+{% load static %}
+{% block title %} Details Posts {% endblock %} 
+
+
+{% block content %}
+
+<div class="w3-content w3-container w3-padding-64" id="posts">
+  <h4 class="w3-center"> Here are Detail of chosed post. </h4><br><br>
+
+  <div class="center w3-container w3-padding-64">
+        <div class="col-sm-15 mb-3 mb-sm-0">
+          <div class="card ">
+            <div class="card-body">
+              <a href= "{% url 'main:post_detail' post.id  %}"><h5 class="card-title">{{ post.title }}</h5></a>
+              <p class="card-text">{{ post.Content }}</p>
+              <p class="card-text">{{ post.publish_date }}</p>
+              <div class="m-3 d-flex gap-2"><a href="{% url 'main:update_post' post.id %}" class="btn btn-primary">update</a><a href="{% url 'main:delete_post' post.id %}" class="btn btn-danger">delete</a></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>
+
+<div class="w3-content w3-container w3-padding-64">
+  <h4 class="w3-center"> Add Review </h4><br><br>
+
+  <div>
+    <form action="{% url 'main:add_review' post.id %}" method="post">
+        {% csrf_token %}
+
+        <input type="text" name="name" class="form-control" placeholder="Your Name.." /> 
+
+        <textarea name="content" class="form-control" placeholder="Your Review here..."></textarea>
+
+        <div class="w3-content w3-container w3-padding-64">
+            <h4>Choose the Rating:</h4><br>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="rating" value="1" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+              1 Star
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="rating" value="2" id="flexRadioDefault2" checked>
+            <label class="form-check-label" for="flexRadioDefault2">
+              2 Star
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="rating" value="3" id="flexRadioDefault2" checked>
+            <label class="form-check-label" for="flexRadioDefault2">
+              3 Star
+            </label>
+        </div>
+        </div>
+
+
+        <input class="btn btn-primary" type="submit" value="Add Review" />
+
+    </form>
+</div>
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+{% endblock %}
+
+
