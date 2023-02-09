@@ -1,0 +1,19 @@
+{% extends 'subjects/base.html' %}
+{% block title %}Search Result{% endblock %}
+
+
+{%block content%}
+<div class="container ">
+   
+    <div class="text-center text-primary mt-5 mb-5">
+        {% for result in result_search %}
+           <div class="text-center mb-3">
+                <h1><strong>{{result.title}}</strong></h1>
+                <h6>{{result.published_date}}</h6>
+           </div>
+           <h3>{{result.content}}</h3>
+        {% endfor %}
+    </div>
+   
+</div>
+{% endblock %}
