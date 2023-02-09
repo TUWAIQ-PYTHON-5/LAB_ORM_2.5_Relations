@@ -62,11 +62,13 @@ def detailes(request : HttpRequest,blog_id):
 
 
 def add_comment(request :HttpRequest,blog_id):
- if request.method=="POST":
-    blog = Post.objects.get(id=blog_id) 
-    new_comment=Comment(blog=blog,name=request.POST["name"], content = request.POST["content"])   
-    new_comment.save()
- return redirect(request,'blog:blog details',{"blog" : blog})
+    if request.method=="POST":
+        blog = Post.objects.get(id=blog_id) 
+        new_comment=Comment(blog=blog,name=request.POST["name"], content = request.POST["content"])   
+        new_comment.save()
+    return redirect("blog:blog details", blog_id=blog_id)
+
+ 
 
  
   

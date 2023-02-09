@@ -10,13 +10,6 @@ Details for {{ blog.Title }}
 
 {% block content %}
 
-<style>
-
-
-</style>
-
-
-
 <br>
 <div class="container">
 
@@ -55,7 +48,7 @@ Details for {{ blog.Title }}
 
 <div class="container">
   <br>
-  <h3>Add Comments here ...</h3> <hr> <br>
+  <h3>Add your comment here ...</h3> <hr> <br>
   <form action="{%url 'blog:add_comment' blog.id  %}" method="post">
     {% csrf_token %}
     <div class="mb-3">
@@ -70,12 +63,4 @@ Details for {{ blog.Title }}
        <input class="btn btn-primary" type="submit" value="Submit">
   </form>
   </div>
-
-
-
-
-
-
-
-
 {% endblock %}
