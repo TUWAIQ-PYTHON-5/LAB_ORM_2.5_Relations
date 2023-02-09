@@ -37,10 +37,11 @@
     <div  class="m-5">
         <h3>All Reviews :</h3>
         {% for review1 in review  %}
-            <div class="p-4 border mt-4">
-
-                <h5 class="mb-2"><strong>Name : </strong>{{ review1.name }}</h5>
-                <p> <strong>The Review : </strong><br/>{{ review1.content }}</p>
+            <div class="p-3 mb-4 ms-5 me-5 bg-info bg-opacity-10 border rounded-pill rounded-5">
+                <div class="ps-5">
+                    <h5 class="mb-2"><strong>Name : </strong>{{ review1.name }}</h5>
+                    <p> <strong>The Review : </strong><br/>{{ review1.content }}</p>
+                </div>
 
             </div>
             {% endfor %}
