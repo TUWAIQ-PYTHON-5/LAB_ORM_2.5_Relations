@@ -27,8 +27,9 @@ def add_post(request : HttpRequest):
 
 def blog_details(request : HttpRequest, blog_id):
     blog = Post.objects.get(id = blog_id)
+    comments=Comment.objects.filter(post=blog_id)
 
-    return render(request, "main/Blog_details.html", {"blog" : blog})
+    return render(request, "main/Blog_details.html", {"blog" : blog ,"comments":comments})
 
 
 def update(request : HttpRequest, blog_id):
